@@ -24,12 +24,14 @@ int main()
 	bool found;
 
 	// Prompt for file names, read file names, and prepare files
-	cout << "Enter name of input command file: ";
-	cin >> inFileName;
+	//cout << "Enter name of input command file: ";
+	//cin >> inFileName;
+    inFileName = "TestDriverData";
 	inFile.open(inFileName);
 
-	cout << "Enter name of output file: ";
-	cin >> outFileName;
+//	cout << "Enter name of output file: ";
+//	cin >> outFileName;
+    outFileName = "results.txt";
 	outFile.open(outFileName);
 
 	if (!inFile)
@@ -50,8 +52,8 @@ int main()
 			inFile >> item;
 			//cin >> item;
 			list.AddItem(item);
-            		cout << item;
-            		cout << " added to list." << endl;
+            cout << item;
+            cout << " added to list." << endl;
 			outFile << item;
 			outFile << " added to list." << endl;
 		}
@@ -60,8 +62,8 @@ int main()
 			inFile >> item;
 			//cin >> item;
 			list.DeleteItem(item);
-           		cout << item;
-            		cout << " is deleted." << endl;
+            cout << item;
+            cout << " is deleted." << endl;
 			outFile << item;
 			outFile << " is deleted." << endl;
 		}
@@ -79,7 +81,7 @@ int main()
 			}
 		}
 		else if (command == "GetLength") {
-            		cout << "Length is " << list.GetLength() << endl;
+            cout << "Length is " << list.GetLength() << endl;
 			outFile << "Length is " << list.GetLength() << endl;
 		}
 		else if (command == "IsFull") {
@@ -92,8 +94,8 @@ int main()
             }
 		}
 		else if (command == "MakeEmpty") {
-			out << "Make list empty." << endl;
-			outFile << "Make list empty." << endl;
+			cout << "List is empty." << endl;
+			outFile << "List is empty." << endl;
 			list.MakeEmpty();
 		}
 		else if (command == "PrintList") {
@@ -123,13 +125,15 @@ void PrintList(ofstream& dataFile, UnsortedList<int>& list)
 {
 	int length;
 	int item;
-	dataFile << "PrintList" << endl;
+	dataFile << "PrintList: ";
 	cout << "PrintList: ";
 
 	list.ResetIterator();	         // Sets currentPos to head
 	length = list.GetLength();
-	if (length == 0)
-		dataFile << "List is empty.";
+	if (length == 0) {
+        dataFile << "List is empty.";
+        cout << "List is empty.";
+    }
 	else
 		for (int counter = 0; counter < list.GetLength(); counter++)
 		{

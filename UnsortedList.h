@@ -7,6 +7,9 @@ class UnsortedList
 public:
   UnsortedList();
   // Constructor
+
+  ~UnsortedList();
+  // Destructor
   
   void MakeEmpty();
   // Function: Returns the list to the empty state.
@@ -56,6 +59,14 @@ public:
 
 private:
   int length;
+
+  struct Node {
+      T value;
+      Node* next;
+  };
+
+  Node* head;
+  Node* currPos;
 
   // Need to create the head... and a node definition
   // Also need something to track the iterator position
